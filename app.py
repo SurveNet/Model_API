@@ -1,5 +1,6 @@
 import numpy as np 
 from flask import Flask, abort, request, jsonify
+import os as os 
 #import cPickle as pickle
 
 #my_model = pickle.load(open("model.pkl", "rb"))
@@ -23,4 +24,4 @@ def make_a_prediction():
     return jsonify(result = response)
 
 if __name__ == '__main__':
-    app.run(port=port)
+    app.run(port=port, debug=True)
