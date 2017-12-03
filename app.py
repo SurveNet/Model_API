@@ -3,7 +3,7 @@ from flask import Flask, abort, request, jsonify
 #import cPickle as pickle
 
 #my_model = pickle.load(open("model.pkl", "rb"))
-
+port = int(os.environ.get('PORT', 33507))
 app = Flask(__name__)
 
 @app.route('/')
@@ -23,4 +23,4 @@ def make_a_prediction():
     return jsonify(result = response)
 
 if __name__ == '__main__':
-    app.run(port=5000)
+    app.run(port=port)
