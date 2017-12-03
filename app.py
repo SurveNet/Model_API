@@ -8,19 +8,19 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-    response = "____ HOME PAGE ______"
+    response = "Route index for Survenet model API"
     return jsonify(result= response)
 
-@app.route('/model', method=['POST'])
+@app.route('/model',methods=['POST'])
 def make_a_prediction():
 
-    data = request.get_json(force=true)
-    prediction_request = null #/*** Insert parameters here ***/
-    prediction_request = np.array(prediction_request)
+    # data = request.get_json(force=true)
+    # prediction_request = null #/*** Insert parameters here ***/
+    # prediction_request = np.array(prediction_request)
 
     response = "IM WORKING"
 
     return jsonify(result = response)
 
 if __name__ == '__main__':
-    app.run(port=2345, debug = true)
+    app.run(port=5000)
