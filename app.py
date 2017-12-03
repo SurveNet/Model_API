@@ -6,6 +6,11 @@ from flask import Flask, abort, request, jsonify
 
 app = Flask(__name__)
 
+@app.route('/')
+def home():
+    response = "____ HOME PAGE ______"
+    return jsonify(result= response)
+
 @app.route('/model', method=['POST'])
 def make_a_prediction():
 
@@ -13,9 +18,9 @@ def make_a_prediction():
     prediction_request = null #/*** Insert parameters here ***/
     prediction_request = np.array(prediction_request)
 
+    response = "IM WORKING"
 
-
-    return jsonify("----- works ---")
+    return jsonify(result = response)
 
 if __name__ == '__main__':
     app.run(port=2345, debug = true)
