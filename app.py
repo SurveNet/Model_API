@@ -59,7 +59,6 @@ def make_a_prediction():
         
         print('======= 7 =========')
 
-
         print('============RESPONSE' + response)
         return response.read().decode('utf-8')
 
