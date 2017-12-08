@@ -47,12 +47,12 @@ def make_a_prediction():
 
     x = x.reshape(x.shape[0], 64, 1)
 
+    x = np.expand_dims(x, axis = 0)
     print('======= 6 =========')
 
     with graph.as_default():
         out = model.predict(x)
         print(out)
-        print(np.argmax(out,axis=1))
         print('======= 7 =========')
 
         reponse = np.array_str(np.argmax(out,axis=1))
