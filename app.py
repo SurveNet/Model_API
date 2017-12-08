@@ -24,7 +24,7 @@ def home():
     response = "Route index for Survenet model API"
     return jsonify(result= response)
 
-@app.route('/model',methods=['GET','POST'])
+@app.route('/model',methods=['POST'])
 def make_a_prediction():
 
     print('======= Request made by surveyapp =========')
