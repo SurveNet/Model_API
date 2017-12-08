@@ -51,8 +51,8 @@ def make_a_prediction():
 
     with graph.as_default():
         out = model.predict(x)
-        response = np.array_str(np.argmax(out))
-        
+        print(out)
+        print(np.argmax(out,axis=1))
         print('======= 7 =========')
 
         print('============RESPONSE' + response)
