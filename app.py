@@ -14,10 +14,10 @@ app = Flask(__name__)
 global model, graph
 model, graph = init()
 
-def convertImage(imgData):
-    imgstring = re.search(r'base64,(.*)',imgData).group(1)
-    with open('out.jpg', 'wb') as out:
-        out.write(imgstring.decode('base64'))
+def convertImage(imgData1):
+    imgstr = re.search(r'base64,(.*)',imgData1).group(1)
+    with open('output.png','wb') as output:
+        output.write(imgstr.decode('base64'))
 
 @app.route('/')
 def home():
@@ -26,9 +26,12 @@ def home():
 
 @app.route('/model',methods=['GET','POST'])
 def make_a_prediction():
+
+    print('======= Request made by surveyapp =========')
+
     imageData = request.get_data()
     convertImage(imageData)
-    x = imread('out.jpg', mode ='L')
+    x = imread('output.png',mode='L')
     x = np.invert(x)
     x = imresize(x, 64, 64)
     x = x.reshape(1, 64, 64, 1)
