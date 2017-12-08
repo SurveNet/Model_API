@@ -55,8 +55,10 @@ def make_a_prediction():
         print(np.argmax(out,axis=1))
         print('======= 7 =========')
 
-        print('============RESPONSE' + response)
-        return response.read().decode('utf-8')
+        reponse = np.array_str(np.argmax(out,axis=1))
+        return reponse
+        # print('============RESPONSE' + response)
+        # return response.read().decode('utf-8')
 
  
 
