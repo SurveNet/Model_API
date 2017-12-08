@@ -50,11 +50,7 @@ def make_a_prediction():
 
     # x = x.reshape(64, 64, 3)
     test_image = image.load_img('output.jpg',target_size=(64, 64))
-
-
-
-
-    test_image = test_image.img_to_array(test_image)
+    test_image = image.img_to_array(test_image)
     test_image = np.expand_dims(test_image, axis = 0)
     print('======= 6 =========')
 
