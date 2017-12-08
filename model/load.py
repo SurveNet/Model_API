@@ -7,7 +7,7 @@ import os
 
 def init():
     #Open the json model file and read
-    json_file = open('./model.json', 'r')
+    json_file = open('model/model.json', 'r')
     loaded_json = json_file.read()
     json_file.close() 
     #initialize model
