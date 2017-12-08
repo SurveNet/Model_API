@@ -41,7 +41,7 @@ def make_a_prediction():
     
     print('======= 4 =========')
 
-    x = imresize(x, (64, 64)
+    x = imresize(x, (64, 64))
 
     print('======= 5 =========')
 
