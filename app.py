@@ -14,8 +14,8 @@ app = Flask(__name__)
 global model, graph
 model, graph = init()
 
-def convertImage(imageData):
-    imgstring = re.search(r'base64,(.*)',imgData1).group(1)
+def convertImage(imgData):
+    imgstring = re.search(r'base64,(.*)',imgData).group(1)
     with open('out.jpg', 'wb') as out:
         out.write(imgstring.decode('base64'))
 
