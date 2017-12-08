@@ -49,7 +49,7 @@ def make_a_prediction():
 
     print('======= 6 =========')
 
-    with graph.as_result():
+    with graph.as_default():
         out = model.predict(x)
         response = np.array_str(np.argmax(out))
         
