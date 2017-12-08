@@ -40,7 +40,7 @@ def make_a_prediction():
         response = np.array_str(np.argmax(out))
         return response
 
-
+ 
 
     # print('-------LOADED MODEL----------')
     # loaded_model.load_weights("/output/out.h5")
