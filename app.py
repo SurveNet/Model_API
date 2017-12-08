@@ -35,7 +35,7 @@ def make_a_prediction():
 
     print('======= 2 GOT PAST CONVERTIMAGE =========')
 
-    img = imread('output.jpg',mode='L')
+    # img = imread('output.jpg',mode='L')
 
     # print('======= 3 =========')
     
@@ -47,8 +47,9 @@ def make_a_prediction():
 
     # print('======= 5 =========')
 
+
     # x = x.reshape(64, 64, 3)
-    test_image = image.load_img(img,target_size=(64, 64))
+    test_image = image.load_img('output.jpg',target_size=(64, 64))
 
 
 
