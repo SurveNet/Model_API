@@ -14,14 +14,9 @@ global model, graph
 model, graph = init()
 
 def convertImage(imgData1):
-
-    print('======= GOT INTO CONVERT IMAGE=========')
-
-
-    imgstr = re.search(r'base64,(.*)',imgData1).group(1)
+    imgstr = re.search(b'base64,(.*)',imgData1).group(1)
     with open('output.png','wb') as output:
-        output.write(imgstr.decode('base64'))
-
+         output.write(base64.b64decode(imgstr))
 
 @app.route('/')
 def home():
