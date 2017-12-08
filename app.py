@@ -8,6 +8,8 @@ from load import *
 from scipy.misc.pilutil import imsave, imread, imresize
 from flask import Flask, abort, request, jsonify
 import base64
+from keras.preprocessing import image  
+
 
 app = Flask(__name__)
 
@@ -33,26 +35,30 @@ def make_a_prediction():
 
     print('======= 2 GOT PAST CONVERTIMAGE =========')
 
-    x = imread('output.jpg',mode='L')
+    img = imread('output.jpg',mode='L')
 
     # print('======= 3 =========')
     
-    x = np.invert(x)
+    # image = np.invert(image)
     
     # print('======= 4 =========')
 
-    x = imresize(x, (64, 64))
+    # x = imresize(x, (64, 64))
 
     # print('======= 5 =========')
 
     # x = x.reshape(64, 64, 3)
+    test_image = image.load_img(img,target_size=(64, 64))
 
-    x = x.img_to_array(x)
-    x = np.expand_dims(x, axis = 0)
+
+
+
+    test_image = test_image.img_to_array(test_image)
+    test_image = np.expand_dims(test_image, axis = 0)
     print('======= 6 =========')
 
     with graph.as_default():
-        out = model.predict(x)
+        out = model.predict(test_image)
         print(out)
         print('======= 7 =========')
 
