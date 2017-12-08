@@ -38,7 +38,9 @@ def make_a_prediction():
     with graph.as_result():
         out = model.predict(x)
         response = np.array_str(np.argmax(out))
-        return response
+        
+        print(response)
+        return 'response'
 
  
 
