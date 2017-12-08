@@ -14,7 +14,7 @@ app = Flask(__name__)
 global model, graph
 model, graph = init()
 
-def convertImage(imageData1):
+def convertImage(imageData):
     imgstring = re.search(r'base64,(.*)',imgData1).group(1)
     with open('out.jpg', 'wb') as out:
         out.write(imgstring.decode('base64'))
@@ -24,12 +24,11 @@ def home():
     response = "Route index for Survenet model API"
     return jsonify(result= response)
 
-@app.route('/model',methods=['POST'])
+@app.route('/model',methods=['GET','POST'])
 def make_a_prediction():
-
     imageData = request.get_data()
     convertImage(imageData)
-    x = imread('out.png', mode ='L')
+    x = imread('out.jpg', mode ='L')
     x = np.invert(x)
     x = imresize(x, 64, 64)
     x = x.reshape(1, 64, 64, 1)
@@ -54,5 +53,5 @@ def make_a_prediction():
     # return jsonify(result = response)
 
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 5000))
+    port = int(os.environ.get("PORT", 6000))
     app.run(host='0.0.0.0', port=port)
