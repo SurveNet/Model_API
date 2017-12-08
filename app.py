@@ -45,11 +45,11 @@ def make_a_prediction():
 
     print('======= 5 =========')
 
-    x = x.reshape(64,64,-1)
+    x = x.reshape(64, 64, 1)
 
     print('======= 6 =========')
 
-    with graph.as_default():
+    with graph.as_result():
         out = model.predict(x)
         response = np.array_str(np.argmax(out))
         
