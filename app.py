@@ -16,7 +16,7 @@ model, graph = init()
 
 def convertImage(imgData1):
     imgstr = re.search(b'base64,(.*)',imgData1).group(1)
-    with open('output.png','wb') as output:
+    with open('output.jpg','wb') as output:
          output.write(base64.b64decode(imgstr))
 
 @app.route('/')
