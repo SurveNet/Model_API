@@ -8,16 +8,20 @@ from load import *
 from scipy.misc.pilutil import imsave, imread, imresize
 from flask import Flask, abort, request, jsonify
 
-
 app = Flask(__name__)
 
 global model, graph
 model, graph = init()
 
 def convertImage(imgData1):
+
+    print('======= GOT INTO CONVERT IMAGE=========')
+
+
     imgstr = re.search(r'base64,(.*)',imgData1).group(1)
     with open('output.png','wb') as output:
         output.write(imgstr.decode('base64'))
+
 
 @app.route('/')
 def home():
@@ -26,21 +30,38 @@ def home():
 
 @app.route('/model',methods=['POST'])
 def make_a_prediction():
-
-    print('======= Request made by surveyapp =========')
+    print('======= 1 Request made by surveyapp =========')
 
     imageData = request.get_data()
     convertImage(imageData)
+
+    print('======= 2 GOT PAST CONVERTIMAGE =========')
+
     x = imread('output.png',mode='L')
+
+    print('======= 3 =========')
+    
     x = np.invert(x)
+    
+    print('======= 4 =========')
+
     x = imresize(x, 64, 64)
+
+    print('======= 5 =========')
+
     x = x.reshape(1, 64, 64, 1)
+
+    print('======= 6 =========')
+
     with graph.as_result():
         out = model.predict(x)
         response = np.array_str(np.argmax(out))
         
-        print(response)
-        return 'response'
+        print('======= 7 =========')
+
+
+        print('============RESPONSE' + response)
+        return response.read().decode('utf-8')
 
  
 
