@@ -47,7 +47,7 @@ def make_a_prediction():
 
     x = x.reshape(64, 64, 1)
 
-    x = np.expand_dims(x, axis = 1)
+    x = np.expand_dims(x, axis = None)
     print('======= 6 =========')
 
     with graph.as_default():
