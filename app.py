@@ -3,9 +3,7 @@ import os as os
 import keras.models
 import sys
 import re
-
 sys.path.append(os.path.abspath('./model'))
-
 from load import *
 from scipy.misc.pilutil import imsave, imread, imresize
 from flask import Flask, abort, request, jsonify
