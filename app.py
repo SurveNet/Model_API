@@ -47,7 +47,7 @@ def make_a_prediction():
 
     # x = x.reshape(64, 64, 3)
 
-    x = image.img_to_array(x)
+    x = x.img_to_array(x)
     x = np.expand_dims(x, axis = 0)
     print('======= 6 =========')
 
