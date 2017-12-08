@@ -7,6 +7,7 @@ sys.path.append(os.path.abspath('./model'))
 from load import *
 from scipy.misc.pilutil import imsave, imread, imresize
 from flask import Flask, abort, request, jsonify
+import base64
 
 app = Flask(__name__)
 
