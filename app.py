@@ -45,7 +45,7 @@ def make_a_prediction():
 
     print('======= 5 =========')
 
-    x = x.reshape(None, 64, 64, 3)
+    x = x.reshape(64,64,3)
 
     print('======= 6 =========')
 
