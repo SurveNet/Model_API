@@ -35,18 +35,19 @@ def make_a_prediction():
 
     x = imread('output.jpg',mode='L')
 
-    print('======= 3 =========')
+    # print('======= 3 =========')
     
     x = np.invert(x)
     
-    print('======= 4 =========')
+    # print('======= 4 =========')
 
     x = imresize(x, (64, 64))
 
-    print('======= 5 =========')
+    # print('======= 5 =========')
 
-    x = x.reshape(64, 64)
+    # x = x.reshape(64, 64, 3)
 
+    x = image.img_to_array(x)
     x = np.expand_dims(x, axis = 0)
     print('======= 6 =========')
 
