@@ -12,7 +12,7 @@ def init():
     json_file.close() 
     #initialize model
     loaded_model = model_from_json(loaded_json)
-    loaded_model.load_weights('./saved_weights.h5')
+    loaded_model.load_weights('model/saved_weights.h5')
     print("Model succesffully loaded")
     #evaluate
     loaded_model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
