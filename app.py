@@ -55,30 +55,16 @@ def make_a_prediction():
     print('======= 6 =========')
 
     with graph.as_default():
-        out = model.predict(test_image)
-        print(out)
-        print('======= 7 =========')
+        result = model.predict(test_image)
 
-        reponse = np.array_str(np.argmax(out))
+        print(result[0][0])
+
+        if result[0][0] > 0.5:
+            response = 'Happy'
+        else:
+            response = 'Sad'
         return reponse
-        # print('============RESPONSE' + response)
-        # return response.read().decode('utf-8')
-
- 
-
-    # print('-------LOADED MODEL----------')
-    # loaded_model.load_weights("/output/out.h5")
-    # loaded_model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
-    # score = loaded_model.evaluate(X, Y, verbose=0)
-    # print("Loaded model from disk")
-    # print("%s: %.2f%%" % (loaded_model.metrics_names[1], score[1]*100))
-    # data = request.get_json(force=true)
-    # prediction_request = null #/*** Insert parameters here ***/
-    # prediction_request = np.array(prediction_request)
-    # response = "IM WORKING"
-
-    # return jsonify(result = response)
-
+    
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 6000))
     app.run(host='0.0.0.0', port=port)
