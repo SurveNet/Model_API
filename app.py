@@ -45,7 +45,7 @@ def make_a_prediction():
 
     print('======= 5 =========')
 
-    x = x.reshape(x.shape[0], 64, 64)
+    x = x.reshape(x.shape[0], 64, 1)
 
     print('======= 6 =========')
 
