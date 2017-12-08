@@ -33,7 +33,7 @@ def make_a_prediction():
 
     print('======= 2 GOT PAST CONVERTIMAGE =========')
 
-    x = imread('output.png',mode='P')
+    x = imread('output.jpg',mode='L')
 
     print('======= 3 =========')
     
