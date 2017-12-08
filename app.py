@@ -1,10 +1,23 @@
 import numpy as np 
-from flask import Flask, abort, request, jsonify
 import os as os 
-#import cPickle as pickle
+import keras.models
+import sys
+import re
+from load import *
+from scipy.misc import imsave, imread, imresize
+from flask import Flask, abort, request, jsonify
 
-#my_model = pickle.load(open("model.pkl", "rb"))
+sys.path.append(os.path.abspath('./model'))
+
 app = Flask(__name__)
+
+global model, graph
+model, graph = init()
+
+def convertImage(imageData1):
+    imgstring = re.search(r'base64,(.*)',imgData1).group(1)
+    with open('out.jpg', 'wb') as out:
+        out.write(imgstring.decode('base64'))
 
 @app.route('/')
 def home():
@@ -14,13 +27,31 @@ def home():
 @app.route('/model',methods=['POST'])
 def make_a_prediction():
 
+    imageData = request.get_data()
+    convertImage(imageData)
+    x = imread('out.png', mode ='L')
+    x = np.invert(x)
+    x = imresize(x, 64, 64)
+    x = x.reshape(1, 64, 64, 1)
+    with graph.as_result():
+        out = model.predict(x)
+        response = np.array_str(np.argmax(out))
+        return response
+
+
+
+    # print('-------LOADED MODEL----------')
+    # loaded_model.load_weights("/output/out.h5")
+    # loaded_model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
+    # score = loaded_model.evaluate(X, Y, verbose=0)
+    # print("Loaded model from disk")
+    # print("%s: %.2f%%" % (loaded_model.metrics_names[1], score[1]*100))
     # data = request.get_json(force=true)
     # prediction_request = null #/*** Insert parameters here ***/
     # prediction_request = np.array(prediction_request)
+    # response = "IM WORKING"
 
-    response = "IM WORKING"
-
-    return jsonify(result = response)
+    # return jsonify(result = response)
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
