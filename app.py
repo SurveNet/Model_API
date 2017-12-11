@@ -28,6 +28,7 @@ def home():
 
 @app.route('/model',methods=['GET','POST'])
 def make_a_prediction():
+    response = ("undefined")
     print('1: Request made by surveyapp')
 
     imageData = request.get_data()
@@ -37,7 +38,7 @@ def make_a_prediction():
     test_image = image.load_img('output.jpg',target_size=(64, 64))
     test_image = image.img_to_array(test_image)
     print('3: image converted to array')
-    
+
     test_image = np.expand_dims(test_image, axis = 0)
     print('4: Dimension added')
 
@@ -49,7 +50,7 @@ def make_a_prediction():
         response = 'Happy'
     else:
         response = 'Sad'
-    return response
+    return response 
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 6000))
