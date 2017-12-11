@@ -5,6 +5,13 @@ from scipy.misc.pilutil import imread, imresize, imshow
 import tensorflow as tf
 import os
 
+'''
+Initialise the model. 
+
+Load the model architecture from the JSON file
+Initialise the weights using saved_weights.h5
+compile the model and return it
+'''
 def init():
     #Open the json model file and read
     json_file = open('model/model.json', 'r')
@@ -16,6 +23,5 @@ def init():
     print("Model succesffully loaded")
     #evaluate
     loaded_model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
-    graph = tf.get_default_graph()
 
-    return loaded_model, graph
+    return loaded_model
