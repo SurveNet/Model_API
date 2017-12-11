@@ -17,6 +17,7 @@ global model, graph
 model, graph = init()
 
 def convertImage(imgData1):
+
     imgstr = re.search(b'base64,(.*)',imgData1).group(1)
     with open('output.jpg','wb') as output:
          output.write(base64.b64decode(imgstr))
@@ -32,8 +33,7 @@ def make_a_prediction():
     print('1: Request made by surveyapp')
 
     imageData = request.get_data()
-
-    print(imageData)
+    print(request)
 
     convertImage(imageData)
     print('2: Image was converted')
@@ -45,14 +45,14 @@ def make_a_prediction():
     test_image = np.expand_dims(test_image, axis = 0)
     print('4: Dimension added')
 
-    # with graph.as_default():
     result = model.predict(test_image)
-    print(result[0][0])
 
     if result[0][0] > 0.5:
         response = 'Happy'
+        print(result[0][0])
     else:
         response = 'Sad'
+        print(result[0][0])
     return response 
 
 if __name__ == "__main__":
