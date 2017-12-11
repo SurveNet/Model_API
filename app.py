@@ -33,7 +33,7 @@ def make_a_prediction():
     print('1: Request made by surveyapp')
 
     imageData = request.get_data()
-    print(request)
+    print(request.get_data())
 
     convertImage(imageData)
     print('2: Image was converted')
