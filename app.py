@@ -32,13 +32,12 @@ def make_a_prediction():
 
     imageData = request.get_data()
     convertImage(imageData)
-
     print('2: Image was converted')
 
     test_image = image.load_img('output.jpg',target_size=(64, 64))
     test_image = image.img_to_array(test_image)
-
     print('3: image converted to array')
+    
     test_image = np.expand_dims(test_image, axis = 0)
     print('4: Dimension added')
 
