@@ -53,7 +53,7 @@ def make_a_prediction():
     else:
         response = 'Sad'
         print(result[0][0])
-    return response 
+    return jsonify(response)
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 6000))
