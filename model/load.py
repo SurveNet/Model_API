@@ -12,6 +12,7 @@ Load the model architecture from the JSON file
 Initialise the weights using saved_weights.h5
 compile the model and return it
 '''
+
 def init():
     #Open the json model file and read
     json_file = open('model/model.json', 'r')
